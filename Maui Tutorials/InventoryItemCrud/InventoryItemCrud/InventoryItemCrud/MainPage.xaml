@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventoryItemCrud.MainPage"
+             Title="Inventory Item Crud App">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Entry x:Name="ItemNoEntry" Placeholder="Item Number" Keyboard="Numeric"/>
+        <Entry x:Name="DescriptionEntry" Placeholder="Description"/>
+        <Entry x:Name="PriceEntry" Placeholder="Price" Keyboard="Numeric"/>
+
+        <HorizontalStackLayout Spacing="10">
+            <Button  x:Name="btnAdd"  Text="Add" Clicked="btnAdd_Clicked" />
+            <Button x:Name="btnUpdate" Text="Update" Clicked="btnUpdate_Clicked"/>
+            <Button x:Name="btnDelete" Text="Delete" Clicked="btnDelete_Clicked" />
+        </HorizontalStackLayout>
+
+        <ListView x:Name="InventoryListView" 
+                  ItemsSource="{Binding InventoryItems}" 
+                  ItemSelected="InventoryListView_ItemSelected_1" 
+                  SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Description}" Detail="{Binding Price}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
